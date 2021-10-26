@@ -4,7 +4,8 @@
 using namespace std;
 
 int main() {
-    fork(); // 자식 프로세스를 생성함 -> 아래의 코드는 부모 프로세스와 자식 프로세스에서 두번 실행 됨
-    cout << "Hello World!!" << endl;
+    
+
+    
     return 0;
 }
