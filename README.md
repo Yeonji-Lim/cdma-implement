@@ -1,22 +1,9 @@
 # cdma-implement
 cdma 프로그램 구현하기
 
-근데 이제 시스템 콜 리뷰를 곁들인
+근데 이제 시스템 콜 리뷰를 곁들인..(시스템 콜 설명 : System call 종류.docx)
 
-~~~
-#include <iostream>
-#include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
-#include <unistd.h> //Unix에서 사용하는 C 컴파일러 헤더 파일
-using namespace std;
-
-int main() {
-    fork(); // 자식 프로세스를 생성함 -> 아래의 코드는 부모 프로세스와 자식 프로세스에서 두번 실행 됨
-    cout << "Hello World!!" << endl;
-    return 0;
-}
-~~~
-
-조건
+## 조건
 > 칩 시퀀스 길이 : 8
 >
 > 송신국 수 : 4
@@ -39,6 +26,21 @@ int main() {
 >
 > 4. 수신기 프로세스는 전달 받은 시퀀스와 원래 가지고 있던 칩시퀀스를 inner product하고 칩 시퀀스의 길이로 나눈 값을 출력
 
+## fork
+~~~
+#include <iostream>
+#include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
+#include <unistd.h> //Unix에서 사용하는 C 컴파일러 헤더 파일
+using namespace std;
+
+int main() {
+    fork(); // 자식 프로세스를 생성함 -> 아래의 코드는 부모 프로세스와 자식 프로세스에서 두번 실행 됨
+    cout << "Hello World!!" << endl;
+    return 0;
+}
+~~~
+
+## pipe
 ~~~
 #include <iostream>
 #include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
