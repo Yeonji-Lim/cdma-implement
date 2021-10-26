@@ -41,6 +41,8 @@ int main() {
 ~~~
 
 ## pipe
+
+### 자식 -> 부모 
 ~~~
 #include <iostream>
 #include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
@@ -65,6 +67,38 @@ int main() {
     } else { //부모 프로세스인 경우
         read(fd[0], buf, BUF_SIZE); //파이프 출구로 부터 값을 읽어들이고 buf에 저장
         cout <<buf<< endl;
+    }
+    return 0;
+}
+~~~
+
+### 부모 -> 자식
+~~~
+#include <iostream>
+#include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
+#include <unistd.h> //Unix에서 사용하는 C 컴파일러 헤더 파일
+using namespace std;
+
+#define BUF_SIZE 30
+
+int main() {
+    int fd[2];
+    char str[] = "Who are you?";
+    char buf[BUF_SIZE];
+    pid_t pid;
+
+    pipe(fd); 
+
+    pid=fork(); 
+
+    if(pid==0) { //자식 프로세스인 경우 
+        sleep(1);
+        read(fd[0], buf, BUF_SIZE);     //파이프 출구로 부터 값을 읽어들이고 buf에 저장
+        cout <<"Child output : "<<buf<< endl;
+    } else { //부모 프로세스인 경우
+        write(fd[1], str, sizeof(str)); //파이프의 입구로 메시지를 보냄
+        cout << "Parent send" << endl;
+        sleep(2);
     }
     return 0;
 }
