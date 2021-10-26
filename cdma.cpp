@@ -1,9 +1,3 @@
-# cdma-implement
-cdma 프로그램 구현하기
-
-근데 이제 시스템 콜 리뷰를 곁들인
-
-~~~
 #include <iostream>
 #include <sys/types.h> //시스템에서 사용하는 자료형에 관한 정보들
 #include <unistd.h> //Unix에서 사용하는 C 컴파일러 헤더 파일
@@ -14,4 +8,3 @@ int main() {
     cout << "Hello World!!" << endl;
     return 0;
 }
-~~~
