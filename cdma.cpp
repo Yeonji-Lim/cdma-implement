@@ -26,7 +26,7 @@ int main() {
     ///// 전송 비트 입력 /////
     ///////////////////////
     cout << "-----Enter " << NUM_TRANS << " transmission bits-----" << endl;
-    pid_t tpid[NUM_TRANS];      //4개의 송신기 프로세스를 생성해야 함
+    pid_t tpid[NUM_TRANS];      //4개의 송신기 프로세스를 생성해야 함(transmitter)
     int tbit;                   //전송비트 저장
     int tcs[8];                 //송신 신호 (transmitter -> joiner)
     int buf[8];                 //수신 신호 (joiner <- transmitter)
@@ -69,6 +69,13 @@ int main() {
             }
         }
     }
+    cout << "--------------------------------------------------" << endl;
+    cout << "What joiner will send to receivers : ";
+    for(int i = 0; i < CS_SIZE; i++) {
+        cout << acs[i] << " ";
+    }
+    cout << endl;
+    cout << "--------------------------------------------------" << endl;
 
     return 0;
 }
